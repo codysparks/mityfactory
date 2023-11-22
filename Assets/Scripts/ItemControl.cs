@@ -35,7 +35,7 @@ public class ItemControl : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Player.SetInteraction(gameObject.AddComponent<ItemControl>());
+            Player.SetInteraction(null);
         }
     }
 
