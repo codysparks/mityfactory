@@ -384,7 +384,7 @@ MonoBehaviour:
   playerAnimation: {fileID: 88713799}
   playerMoveSpeed: 4
   playerLocked: 0
-  inventory: {fileID: 5378602819237150910}
+  ItemInteraction: {fileID: 0}
   items: []
 --- !u!50 &88713795
 Rigidbody2D:
@@ -519,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 88713793}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.63, y: -0.28, z: 0}
+  m_LocalPosition: {x: -3.34, y: -2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3166,9 +3166,10 @@ GameObject:
   - component: {fileID: 818018114}
   - component: {fileID: 818018113}
   - component: {fileID: 818018112}
+  - component: {fileID: 818018115}
   m_Layer: 0
   m_Name: Overlay Objects
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3385,6 +3386,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &818018115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818018110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78fd36b5933521a41892c35c6bd21f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1160845783
 GameObject:
   m_ObjectHideFlags: 0
@@ -5212,12 +5225,12 @@ PrefabInstance:
     - target: {fileID: 4950498196908980439, guid: 8791fcd4c2de3024492049dd41ed0c67,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.57
+      value: -7.58
       objectReference: {fileID: 0}
     - target: {fileID: 4950498196908980439, guid: 8791fcd4c2de3024492049dd41ed0c67,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.28
+      value: 3.45
       objectReference: {fileID: 0}
     - target: {fileID: 4950498196908980439, guid: 8791fcd4c2de3024492049dd41ed0c67,
         type: 3}
@@ -5269,18 +5282,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8791fcd4c2de3024492049dd41ed0c67, type: 3}
---- !u!114 &5378602819237150910 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4887652326216063816, guid: 8791fcd4c2de3024492049dd41ed0c67,
-    type: 3}
-  m_PrefabInstance: {fileID: 853000951068709803}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abca9c7735b6f614fab7562baf3edc3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

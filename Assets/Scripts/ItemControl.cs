@@ -29,6 +29,10 @@ public class ItemControl : MonoBehaviour
         {
             Player.SetInteraction(this);
         }
+
+        if(other.CompareTag("Object")) {
+            parentSpriteRenderer.sortingOrder = 15;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -46,6 +50,7 @@ public class ItemControl : MonoBehaviour
 
     public void ShowItem(Vector3 position)
     {
+        parentSpriteRenderer.sortingOrder = 5;
         parentSpriteRenderer.transform.position = position;
         parentSpriteRenderer.enabled = true;
         parentCollider.enabled = true;

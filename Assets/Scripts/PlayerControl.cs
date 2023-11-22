@@ -84,7 +84,19 @@ public class PlayerControl : MonoBehaviour
 
     public void RemoveItem()
     {
-        items[0].ShowItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - 1.5f + playerlastMoveY, player.transform.position.z));
+        // Facing Up
+        if(playerlastMoveY > 0) {
+            items[0].ShowItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - .5f, player.transform.position.z));
+        }
+        // Facing Down
+        else if(playerlastMoveY < 0) {
+            items[0].ShowItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - 2.1f, player.transform.position.z));
+        }
+        // Facing Left or Right
+        else {
+            items[0].ShowItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - 1.5f, player.transform.position.z));
+        }
+
         items = new List<ItemControl>();
     }
 
