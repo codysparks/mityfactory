@@ -75,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1587624893
   m_SortingLayer: 3
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -249417512, guid: e735d84b2e542894d946d25f74726a6e, type: 3}
+  m_SortingOrder: 15
+  m_Sprite: {fileID: -1360912073, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +102,8 @@ MonoBehaviour:
   Player: {fileID: 0}
   parentSpriteRenderer: {fileID: 0}
   parentCollider: {fileID: 0}
+  progress: 0
+  totalProgress: 4
 --- !u!61 &533121663552571634
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,7 +140,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.75, y: 0.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

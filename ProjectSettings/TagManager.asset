@@ -13,7 +13,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - Objects
+  - 
   - 
   - 
   - 
@@ -46,8 +46,8 @@ TagManager:
   - name: Floor
     uniqueID: 64855243
     locked: 0
-  - name: Objects
-    uniqueID: 1516439299
+  - name: Item
+    uniqueID: 2381276749
     locked: 0
   - name: Player
     uniqueID: 2707342403

@@ -25,22 +25,20 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!playerLocked)
-        {
+        // Allow player to move
+        if (!playerLocked) {
             player.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * playerMoveSpeed;
         }
-        else
-        {
+        else {
             player.velocity = Vector2.zero;
         }
 
         playerAnimation.SetFloat("moveX", player.velocity.x);
         playerAnimation.SetFloat("moveY", player.velocity.y);
 
-        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
-        {
-            if (!playerLocked)
-            {
+        // Control the direction of the player
+        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1) {
+            if (!playerLocked) {
                 playerAnimation.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
                 playerAnimation.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
 
@@ -49,41 +47,31 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
+        if (Input.GetKeyUp(KeyCode.Space)) {
             // Pick up item
-            if (ItemInteraction)
-            {
-                if (CountItems() == 0)
-                {
+            if (ItemInteraction) {
+                if (CountItems() == 0) {
                     AddItem(ItemInteraction);
                     ItemInteraction.HideItem();
                 }
-                else
-                {
+                else {
                     Debug.Log("Inventory Full");
                 }
-            }
-            else if (CountItems() > 0)
-            {
+            } else if (CountItems() > 0) {
                 RemoveItem();
             }
-
         }
     }
 
-    public void SetInteraction(ItemControl item)
-    {
+    public void SetInteraction(ItemControl item) {
         ItemInteraction = item;
     }
 
-    public void AddItem(ItemControl item)
-    {
+    public void AddItem(ItemControl item) {
         items.Add(item);
     }
 
-    public void RemoveItem()
-    {
+    public void RemoveItem() {
         // Facing Up
         if(playerlastMoveY > 0) {
             items[0].ShowItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - .5f, player.transform.position.z));
@@ -100,9 +88,7 @@ public class PlayerControl : MonoBehaviour
         items = new List<ItemControl>();
     }
 
-    public int CountItems()
-    {
+    public int CountItems() {
         return items.Count;
     }
-
 }
