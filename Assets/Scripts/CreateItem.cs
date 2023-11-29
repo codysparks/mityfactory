@@ -8,7 +8,6 @@ public class CreateItem : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        ItemInstance();
     }
 
     // Update is called once per frame
@@ -16,7 +15,7 @@ public class CreateItem : MonoBehaviour
     }
 
     public void ItemInstance() {
-        Vector3 startPosition = GameObject.Find("Start Position").transform.position;
+        Vector3 startPosition = GameObject.Find("Item Create Position").transform.position;
         Instantiate(prefabItem, new Vector3(startPosition.x, startPosition.y, startPosition.z), Quaternion.identity);
     }
 }

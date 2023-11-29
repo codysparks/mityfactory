@@ -13,6 +13,9 @@ public class PlayerControl : MonoBehaviour
     private float playerlastMoveX;
     private float playerlastMoveY;
 
+    public CreateItem StartItem;
+    public bool createItem;
+
     public ItemControl ItemInteraction;
     public List<ItemControl> items;
 
@@ -20,6 +23,8 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         items = new List<ItemControl>();
+        createItem = false;
+        StartItem = FindObjectOfType<CreateItem>();
     }
 
     // Update is called once per frame
@@ -57,10 +62,26 @@ public class PlayerControl : MonoBehaviour
                 else {
                     Debug.Log("Inventory Full");
                 }
-            } else if (CountItems() > 0) {
+            } else if (!createItem && CountItems() > 0) {
                 RemoveItem();
             }
+
+            // Start an item
+            if(createItem && CountItems() == 0) {
+                StartItem.ItemInstance();
+                createItem = false;
+            }
         }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.name == "Start") {
+            createItem = true;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision) {
+        createItem = false;        
     }
 
     public void SetInteraction(ItemControl item) {
