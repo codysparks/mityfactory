@@ -11,12 +11,12 @@ public class CreateItem : MonoBehaviour
     public Tile readyTile;
     public Vector3Int tileLocation;
 
-    public bool isRepeating = true;
-    public float timerDuration = 5f;
+    public float timerDuration;
     private float timer;
 
     // Start is called before the first frame update
     void Start() {
+        timerDuration = 5f;
         tilemap = GetComponentInParent<Tilemap>();
         tileLocation = getTilemapLocation();
         StartCoroutine(TimerCoroutine(timerDuration));
@@ -27,12 +27,8 @@ public class CreateItem : MonoBehaviour
     }
 
     IEnumerator TimerCoroutine(float duration) {
-        // Infinite loop for repetition
-        while (isRepeating) { 
-            yield return new WaitForSeconds(duration);
-            ItemInstance();
-            isRepeating = false;
-        }
+        yield return new WaitForSeconds(duration);
+        ItemInstance();
     }
 
     public void ItemInstance() {
@@ -44,14 +40,16 @@ public class CreateItem : MonoBehaviour
         Instantiate(prefabItem, new Vector3(startPosition.x, startPosition.y, startPosition.z), Quaternion.identity);
     }
 
-    public void OnCollisionExit(Collision other) {
-        Debug.Log(other);
+    public void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("Item")) {
+            Restart();
+        }
     }
 
     public void Restart() {
         // Replace the tile
         tilemap.SetTile(tileLocation, emptyTile);
-        isRepeating = true;
+        StartCoroutine(TimerCoroutine(timerDuration));
     }
 
     public Vector3Int getTilemapLocation() {
