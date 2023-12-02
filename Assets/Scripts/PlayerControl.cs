@@ -13,9 +13,6 @@ public class PlayerControl : MonoBehaviour
     private float playerlastMoveX;
     private float playerlastMoveY;
 
-    public CreateItem StartItem;
-    public bool createItem;
-
     public ItemControl ItemInteraction;
     public List<ItemControl> items;
 
@@ -23,8 +20,6 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         items = new List<ItemControl>();
-        createItem = false;
-        StartItem = FindObjectOfType<CreateItem>();
     }
 
     // Update is called once per frame
@@ -57,31 +52,15 @@ public class PlayerControl : MonoBehaviour
             if (ItemInteraction) {
                 if (CountItems() == 0) {
                     AddItem(ItemInteraction);
-                    ItemInteraction.HideItem();
+                    ItemInteraction.HoldItem();
                 }
                 else {
                     Debug.Log("Inventory Full");
                 }
-            } else if (!createItem && CountItems() > 0) {
+            } else if (CountItems() > 0) {
                 RemoveItem();
             }
-
-            // Start an item
-            if(createItem && CountItems() == 0) {
-                StartItem.ItemInstance();
-                createItem = false;
-            }
         }
-    }
-
-    public void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.name == "Start") {
-            createItem = true;
-        }
-    }
-
-    public void OnCollisionExit2D(Collision2D collision) {
-        createItem = false;        
     }
 
     public void SetInteraction(ItemControl item) {
@@ -95,15 +74,15 @@ public class PlayerControl : MonoBehaviour
     public void RemoveItem() {
         // Facing Up
         if(playerlastMoveY > 0) {
-            items[0].ShowItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - .5f, player.transform.position.z));
+            items[0].DropItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - .5f, player.transform.position.z));
         }
         // Facing Down
         else if(playerlastMoveY < 0) {
-            items[0].ShowItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - 2.1f, player.transform.position.z));
+            items[0].DropItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - 2.1f, player.transform.position.z));
         }
         // Facing Left or Right
         else {
-            items[0].ShowItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - 1.5f, player.transform.position.z));
+            items[0].DropItem(new Vector3(player.transform.position.x + playerlastMoveX, player.transform.position.y - 1.5f, player.transform.position.z));
         }
 
         items = new List<ItemControl>();

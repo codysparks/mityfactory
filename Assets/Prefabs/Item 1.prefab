@@ -42,7 +42,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7705672083503805202}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -104,6 +104,12 @@ MonoBehaviour:
   parentCollider: {fileID: 0}
   progress: 0
   totalProgress: 4
+  progressSprites:
+  - {fileID: -1360912073, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
+  - {fileID: -1315936376, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
+  - {fileID: 456026814, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
+  - {fileID: 1821688335, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
+  followPlayer: 0
 --- !u!61 &533121663552571634
 BoxCollider2D:
   m_ObjectHideFlags: 0

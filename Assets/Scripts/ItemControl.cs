@@ -11,6 +11,8 @@ public class ItemControl : MonoBehaviour
     public BoxCollider2D parentCollider;
     public int progress;
     public int totalProgress;
+    public Sprite[] progressSprites;
+    public bool followPlayer;    
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +20,16 @@ public class ItemControl : MonoBehaviour
         parentSpriteRenderer = GetComponentInParent<SpriteRenderer>();
         parentCollider = GetComponentInParent<BoxCollider2D>();
         Player = FindObjectOfType<PlayerControl>();
+        followPlayer = false;
         progress = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(followPlayer) {
+            transform.position = Vector3.Lerp(transform.position, Player.transform.position, 1);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -60,18 +65,19 @@ public class ItemControl : MonoBehaviour
         return this.name;
     }
 
-    public void ShowItem(Vector3 position)
+    public void DropItem(Vector3 position)
     {
-        parentSpriteRenderer.sortingOrder = 0;
+        parentSpriteRenderer.sortingOrder = 2;
         parentSpriteRenderer.transform.position = position;
-        parentSpriteRenderer.enabled = true;
         parentCollider.enabled = true;
+        followPlayer = false;
     }
 
-    public void HideItem()
+    public void HoldItem()
     {
-        parentSpriteRenderer.enabled = false;
+        parentSpriteRenderer.enabled = true;
         parentCollider.enabled = false;
+        followPlayer = true;
     }
 
     public void ItemProgress(Collider2D other) {
@@ -85,6 +91,10 @@ public class ItemControl : MonoBehaviour
                 // Must go through order or steps
                 if(progress == number - 1) {
                     progress = number;
+
+                    if (progress >= 0 && progress < progressSprites.Length) {
+                        parentSpriteRenderer.sprite = progressSprites[progress];
+                    }
                 }
                 else {
                     Debug.Log("WRONG ORDER");
