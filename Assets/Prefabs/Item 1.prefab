@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1587624893
   m_SortingLayer: 3
   m_SortingOrder: 15
-  m_Sprite: {fileID: -1360912073, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
+  m_Sprite: {fileID: -1716841437, guid: c3d308b09f344874a85da4d88dc2d108, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,10 +105,10 @@ MonoBehaviour:
   progress: 0
   totalProgress: 4
   progressSprites:
-  - {fileID: -1360912073, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
-  - {fileID: -1315936376, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
-  - {fileID: 456026814, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
-  - {fileID: 1821688335, guid: a72c5245407ac8547a1f9342680ba936, type: 3}
+  - {fileID: -1716841437, guid: c3d308b09f344874a85da4d88dc2d108, type: 3}
+  - {fileID: 483907065, guid: e57ff80ca121e374798007c7c95489be, type: 3}
+  - {fileID: -1494298898, guid: cb131328c7ffcbc48a94d8fadfe7c6eb, type: 3}
+  - {fileID: 2063236783, guid: 73466981dfb8b43449dd4b9cb20fbc68, type: 3}
   followPlayer: 0
 --- !u!61 &533121663552571634
 BoxCollider2D:
@@ -146,7 +146,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.75}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
